@@ -24,7 +24,7 @@ let obstacleTimer = 0;
 let obstacleInterval = 1000; // 1 segundo
 let gameTimer = 204000; //204000 - 2000;
 let lastKeyPressTime = 0;
-let keyPressDelay = 130; // 130ms de atraso entre teclas
+let keyPressDelay = 150; // 130ms de atraso entre teclas
 let accumulatedScore = 0;
 let selectedLevel = 0;
 let levelImages = [];
@@ -75,18 +75,25 @@ function draw() {
 
 function startGameScreen() {
   background(0);
+  tint(255, 39);
+  image(backgroundImg, 0, 0, width, height);
+  noTint();
+
   fill(255);
   textAlign(CENTER);
   
   textSize(40);
-  text("Bem-vindo ao ", width / 2, height / 4);
+  textStyle(BOLD);
+  text("BEM-VINDO AO ", width / 2 + 6, height / 4);
   text("IPVC Audio Surf!", width / 2, height / 3);
 
   textSize(20);
-  text("Use as setas esquerda/direita para mudar de faixa.", width / 2, height / 2);
-  text("Canta com a música para ativar obstáculos", width / 2, height / 2 + 40);
-  text("e ganhar Pontos!", width / 2, height / 2 + 65);
-  text("Prima ENTER para começar", width / 2, height / 2 + 160);
+  text("REGRAS: ", width / 2, height / 2);
+  text("Use as setas esquerda/direita para mudar de faixa.", width / 2, height / 2 + 60);
+  text("Canta com a música para ativar obstáculos", width / 2, height / 2 + 100);
+  text("e ganhar Pontos!", width / 2, height / 2 + 125);
+  text("Prima ENTER para começar", width / 2, height / 2 + 215);
+  textStyle(NORMAL);
   
   if (keyIsPressed && key === 'Enter' && millis() - lastKeyPressTime > keyPressDelay) {
     startScreen = false;
@@ -146,6 +153,10 @@ function showLevelSelectScreen() {
 
 function endGameScreen() {
   background(0);
+  tint(255, 39);
+  image(backgroundImg, 0, 0, width, height);
+  noTint();
+
   fill(255, 0, 0);
   textAlign(CENTER);
   
@@ -173,6 +184,10 @@ function endGameScreen() {
 
 function winGameScreen() {
   background(0);
+  tint(255, 39);
+  image(backgroundImg, 0, 0, width, height);
+  noTint();
+
   fill(0, 255, 0);
   textAlign(CENTER);
   
@@ -240,9 +255,10 @@ function playGame() {
   
   for (let i = obstacles.length - 1; i >= 0; i--) {
     // Desenhar obstáculo
-    fill(255, 0, 0);
-    rect(obstacles[i].x - 25, obstacles[i].y - 25, 50, 50);
-    image(obstacleImg, obstacles[i].x - 20, obstacles[i].y - 20, 40, 40);
+    fill(255, 0, 0, 0);
+    noStroke();
+    rect(obstacles[i].x - 25, obstacles[i].y - 25, 50, 70);
+    image(obstacleImg, obstacles[i].x - 30, obstacles[i].y - 40, 60, 80);
     obstacles[i].y += 5;
 
     if (checkCollision(playerPos, obstacles[i])) {
@@ -258,7 +274,7 @@ function playGame() {
       obstacles.splice(i, 1);
     }
   }
-
+  stroke(0);
   fill(255);
   textSize(20);
   textAlign(LEFT);
@@ -305,11 +321,13 @@ function pausePopup() {
   rect(width / 4, height / 3, width / 2, height / 3);
   
   fill(255);
+
   textAlign(CENTER);
   textSize(20);
-  text("Jogo Pausado", width / 2, height / 2 - 30);
-  text("Pressione P para continuar", width / 2, height / 2 + 20);
-  text("ou S para sair", width / 2, height / 2 + 45);
+  text("Jogo Pausado", width / 2, height / 2 - 50);
+  text("Pressione:", width / 2, height / 2 - 5 );
+  text("- P para continuar", width / 2 - 5, height / 2 + 30);
+  text("- S para sair", width / 2 - 5, height / 2 + 55);
   
   if (keyIsPressed && millis() - lastKeyPressTime > keyPressDelay) {
     if (key === 'p') {
