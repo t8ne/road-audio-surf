@@ -4,7 +4,7 @@ An 8bit project using p5.js, inspired by the game 'AudioSurf', where players int
 
 ## 📍 Website
 
-This project can also be played in my website: https://t8ne.github.io/p5/
+This project can also be played in my website: https://t8ne.github.io/road-surf/
 
 ## 🌟 Features
 
