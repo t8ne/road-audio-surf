@@ -6,6 +6,8 @@ An 8bit project using p5.js, inspired by the game 'AudioSurf', where players int
 
 This project can also be played in my website: https://t8ne.github.io/p5/
 
+## 🌟 Features
+
 - **Player Movement**: Uses keyboard input (arrow keys) for character movement, allowing smooth and responsive gameplay.
 - **Audio Management**: Handles background music and sound effects.
 - **Game State Management**: Manages game states, such as the pause menu and level completion.
