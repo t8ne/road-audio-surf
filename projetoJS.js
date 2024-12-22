@@ -402,8 +402,6 @@ function playGame() {
 
   //--Informação do autor
   text("ESC para Menu de Pausa", width/4 + 24, height - 10);
-  text("António Rebelo - Nº28837 - ECGM", width - 30, height - 10);
-
   textStyle(NORMAL);
 
   //--Função para a mudança de faixas
